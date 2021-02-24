@@ -59,6 +59,7 @@ body {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  height: 100vh;
 }
 
 .content .block {
@@ -129,6 +130,12 @@ body {
 }
 
 @media only screen and (max-width: 550px) {
+  .nav {
+    padding: 2px 5px 2px 5px;
+  }
+  .nav h1 {
+    font-size: 1.1rem;
+  }
   .container {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
@@ -147,6 +154,9 @@ body {
     -o-object-fit: cover;
        object-fit: cover;
     border-radius: var(--border-radius);
+  }
+  .images label {
+    font-size: 0.6rem;
   }
   .sidebar {
     margin: 0;

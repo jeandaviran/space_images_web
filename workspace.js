@@ -17,18 +17,22 @@ function loadImages() {
         console.log('vacio');
     } else {
         document.getElementById('content').innerHTML = "";
-        var split = value.split(',');
+        var replace_space = value.replace(/[\s,]+/g, ',');;
+        let split = replace_space.split(',');
+
         for (const index in split) {
-            promises.push(testImage(split[index].trim()).then(
-                function fulfilled(img) {
-                    counter = + counter + 1;
-                    document.getElementById('content').innerHTML += '<div class="block"><img src="' + split[index].trim() + '" onerror="onErrorImage()"></div>';
-                },
-                function rejected() {
-                    counter_error = + counter_error + 1;
-                    document.getElementById('content').innerHTML += '<div class="block"><img src="img/satellite.svg" style="transform: scale(0.4);"></div>';
-                }
-            ));
+            if (split[index] !== "") {
+                promises.push(testImage(split[index].trim()).then(
+                    function fulfilled(img) {
+                        counter = + counter + 1;
+                        document.getElementById('content').innerHTML += '<div class="block"><img src="' + split[index].trim() + '" onerror="onErrorImage()"></div>';
+                    },
+                    function rejected() {
+                        counter_error = + counter_error + 1;
+                        document.getElementById('content').innerHTML += '<div class="block"><img src="img/satellite.svg" style="transform: scale(0.4);"></div>';
+                    }
+                ));
+            }
         }
 
         Promise.all(promises).then(() => {
