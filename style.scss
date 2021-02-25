@@ -8,18 +8,19 @@
     --clr-primary: #6558F5;
     --clr-graymend: #e6e6e6;
     --clr-background: #F0F2F5;/*#F7F9FA;*/
+    --clr-color-text-gray: #C3CFD9;
     --clr-margin-space: 0.6rem;
 }
 body{
     font-family: poppins, sans-serif;
     margin: 0;
-    background: var(--clr-background); 
+    background: var(--clr-background);
 }
 .container{
     display: grid;
     height: 100vh;
     grid-template-columns: 1fr 0.3fr;
-    grid-template-rows: 0.1fr 1fr;
+    grid-template-rows: 1fr; //1fr
     grid-template-areas: 
     "nav nav"    
     "content sidebar";    
@@ -35,11 +36,30 @@ body{
         padding-left: 0.5em;
     }
 }
-.images{
+.images{  
+    overflow-y: auto;
+
     label{
         font-size: 0.9rem;
         margin: 0.5em 1em 0.5em auto;
         padding-left: 1.2em;
+    }
+
+    .image-empty{
+        // display: none;        
+        width: 50%;
+        height: 50%;
+        margin: 0 auto;
+        fill: #6558F5;
+        flex-direction: column;        
+        align-items: center;
+        text-align: center;
+        color: var(--clr-color-text-gray);
+
+        img{
+            height: 70%;
+            width: 70%;            
+        }        
     }
 }
 .content{        
@@ -47,17 +67,23 @@ body{
     padding: var(--main-padding);
     display: flex;
     flex-wrap: wrap;
-    height: 100vh;        
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 0.9rem;
+    height: 100vh;      
        
     .block{        
         box-shadow: 0px 5px 10px var(--clr-graymend);
         border-radius: var(--border-radius);        
         width: 172px;
         height: 172px;        
-        margin: 0 0.5rem 4rem;
+        // margin: 0 0.5rem 4rem;
         background: white;
         text-align: center;
         position: relative;
+        word-wrap: break-word;
+        box-sizing: border-box;
         
         img{
            height: 100%;
@@ -69,6 +95,10 @@ body{
             transform: scale(1.1);    
         }
     }
+
+    // &:empty + .image-empty{        
+    //     display: none;            
+    // }
 }
 .sidebar{
     background: white;
@@ -111,13 +141,16 @@ body{
     }
     .container{
         grid-template-columns: 1fr;
-        grid-template-rows: 0.1fr 1fr 0.5fr;
+        grid-template-rows: 0.1fr 1fr;
         grid-template-areas: 
         "nav"    
         "content"
         "sidebar";                 
     }
     .content{
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 0.1rem;        
+
         .block{                
             width: 104px;
             height: 104px;
@@ -135,10 +168,5 @@ body{
         label{
             font-size: 0.6rem;
         }
-    }
-    .sidebar{
-        margin: 0;
-        border-radius: 10px 10px 0 0;
-        box-shadow: 0px -3px 15px -5px rgba(0,0,0,0.10);      
-    }
+    }    
 }

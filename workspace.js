@@ -38,6 +38,7 @@ function loadImages() {
         Promise.all(promises).then(() => {
             let errorMessage = counter_error > 0 ? ', ' + counter_error + ' imágenes erróneas' : '';
             document.querySelector('.text-result').innerHTML = counter + ' imágenes cargadas' + errorMessage;
+            validateContentImagesIsEmpty();
         });
     }
 }
@@ -53,4 +54,15 @@ function testImage(url) {
         tester.src = url;
     });
     return imgPromise;
+}
+
+function validateContentImagesIsEmpty() {
+    let content = document.getElementById('content');
+    let content_empty = document.getElementById('image-empty');
+    
+    if(content.innerHTML == ""){
+        content_empty.style.display === "block";
+    }else {
+        content_empty.style.display = "none";
+    }
 }
