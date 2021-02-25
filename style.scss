@@ -6,8 +6,11 @@
     --btn-radius: 3px;
     --border-radius: 0.5rem;
     --clr-primary: #6558F5;
+    --clr-primary-accent: #68BAA5;
+    --clr-primary-error: #E60024;
     --clr-graymend: #e6e6e6;
     --clr-background: #F0F2F5;/*#F7F9FA;*/
+    --clr-background-dark: #1E1F21;/*#F7F9FA;*/
     --clr-color-text-gray: #C3CFD9;
     --clr-margin-space: 0.6rem;
 }
@@ -27,12 +30,22 @@ body{
     gap: var(--clr-margin-space);        
 }
 .nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;    
+    align-items: center;
     background: white;
     grid-area: nav;    
-    padding: var(--main-padding);
+    padding: var(--main-padding);    
 
     h1{
         margin: 0.5em 1em 0.5em auto;
+        padding-left: 0.5em;
+        margin-left: 0;
+    }
+    img{        
+        width: 1.7rem;
+        height: 1.7rem;
         padding-left: 0.5em;
     }
 }
@@ -95,10 +108,6 @@ body{
             transform: scale(1.1);    
         }
     }
-
-    // &:empty + .image-empty{        
-    //     display: none;            
-    // }
 }
 .sidebar{
     background: white;
@@ -120,15 +129,40 @@ body{
         outline: none;
         overflow: auto;
     }
-    .button{
-        background: var(--clr-primary);
-        text-align: center;
-        padding: 0.4rem 0 0.4rem;
-        border-radius: var(--btn-radius);
-        color: white;
-    }
-    .button:hover{
-        opacity: 0.9;
+
+    .buttons{
+        display: flex;
+        flex-direction: row;
+        align-content: space-between;
+        gap: 5px;
+
+        .button{
+            width: 100%;
+            background: var(--clr-primary);
+            text-align: center;            
+            padding: 0.4rem 0 0.4rem;
+            border-radius: var(--btn-radius);
+            color: white;
+            cursor: pointer;
+        }
+        .button:hover{
+            opacity: 0.9;
+        }
+    
+        .clean-button{
+            width: 100%;
+            border: 2px solid var(--clr-graymend);            
+            text-align: center;
+            padding: 0.4rem 0 0.4rem;
+            border-radius: var(--btn-radius);
+            color: #1E1F21;
+            cursor: pointer;
+    
+            &:hover{
+                background: var(--clr-graymend);            
+                opacity: 0.9;                           
+            }
+        }
     }
 }
 
@@ -169,4 +203,9 @@ body{
             font-size: 0.6rem;
         }
     }    
+}
+@media (prefers-color-scheme: dark) {
+    body{
+        // background: var(--clr-background-dark);
+    }
 }

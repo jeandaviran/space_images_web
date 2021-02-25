@@ -5,8 +5,12 @@
   --btn-radius: 3px;
   --border-radius: 0.5rem;
   --clr-primary: #6558F5;
+  --clr-primary-accent: #68BAA5;
+  --clr-primary-error: #E60024;
   --clr-graymend: #e6e6e6;
   --clr-background: #F0F2F5;
+  /*#F7F9FA;*/
+  --clr-background-dark: #1E1F21;
   /*#F7F9FA;*/
   --clr-color-text-gray: #C3CFD9;
   --clr-margin-space: 0.6rem;
@@ -31,6 +35,19 @@ body {
 }
 
 .nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background: white;
   -ms-grid-row: 1;
   -ms-grid-column: 1;
@@ -41,6 +58,13 @@ body {
 
 .nav h1 {
   margin: 0.5em 1em 0.5em auto;
+  padding-left: 0.5em;
+  margin-left: 0;
+}
+
+.nav img {
+  width: 1.7rem;
+  height: 1.7rem;
   padding-left: 0.5em;
 }
 
@@ -152,15 +176,45 @@ body {
   overflow: auto;
 }
 
-.sidebar .button {
+.sidebar .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
+  gap: 5px;
+}
+
+.sidebar .buttons .button {
+  width: 100%;
   background: var(--clr-primary);
   text-align: center;
   padding: 0.4rem 0 0.4rem;
   border-radius: var(--btn-radius);
   color: white;
+  cursor: pointer;
 }
 
-.sidebar .button:hover {
+.sidebar .buttons .button:hover {
+  opacity: 0.9;
+}
+
+.sidebar .buttons .clean-button {
+  width: 100%;
+  border: 2px solid var(--clr-graymend);
+  text-align: center;
+  padding: 0.4rem 0 0.4rem;
+  border-radius: var(--btn-radius);
+  color: #1E1F21;
+  cursor: pointer;
+}
+
+.sidebar .buttons .clean-button:hover {
+  background: var(--clr-graymend);
   opacity: 0.9;
 }
 
