@@ -104,9 +104,6 @@ body {
   -ms-grid-column: 1;
   grid-area: content;
   padding: var(--main-padding);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   display: -ms-grid;
@@ -133,6 +130,17 @@ body {
           box-sizing: border-box;
 }
 
+.content .block:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  -webkit-transition: all ease-in-out 0.3s;
+  transition: all ease-in-out 0.3s;
+}
+
+.content .block:hover label {
+  display: block;
+}
+
 .content .block img {
   height: 100%;
   width: 100%;
@@ -141,9 +149,25 @@ body {
   border-radius: var(--border-radius);
 }
 
-.content .block img:hover {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+.content .block label {
+  display: none;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 0 0 0.5rem 0.5rem;
+  font-size: 0.7rem;
+  width: auto;
+  color: white;
+  width: 172px;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  left: 0;
+  bottom: 0;
+  text-align: start;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-transition: opacity 0.8s linear;
+  transition: opacity 0.8s linear;
 }
 
 .sidebar {

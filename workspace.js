@@ -29,7 +29,8 @@ function loadImages() {
                 promises.push(testImage(split[index].trim()).then(
                     function fulfilled(img) {
                         counter = + counter + 1;
-                        document.getElementById('content').innerHTML += '<div class="block"><img src="' + split[index].trim() + '" onerror="onErrorImage()"></div>';
+                        let filename = getFilenameFromUrl(split[index].trim());
+                        document.getElementById('content').innerHTML += '<div class="block"><label>'+filename+'</label><img src="' + split[index].trim() + '" onerror="onErrorImage()"></div>';
                     },
                     function rejected() {
                         counter_error = + counter_error + 1;
@@ -76,3 +77,8 @@ function validateContentImagesIsEmpty() {
         content_empty.style.display = "none";
     }
 }
+function getFilenameFromUrl(url) {
+    const pathname = new URL(url).pathname;
+    const index = pathname.lastIndexOf('/');
+    return (-1 !== index) ? pathname.substring(index + 1) : pathname;
+  }
