@@ -71,7 +71,7 @@ function validateContentImagesIsEmpty() {
     let content = document.getElementById('content');
     let content_empty = document.getElementById('image-empty');
     
-    if(content.innerHTML == ""){
+    if(content.innerHTML == ""){        
         content_empty.style.display = "block";
     }else {
         content_empty.style.display = "none";
