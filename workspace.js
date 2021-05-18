@@ -1,9 +1,3 @@
-document.querySelector('.textlinks').addEventListener("keyup", function (event) {
-    if (event.keyCode === 13) { // key ENTER    
-        event.preventDefault();
-        loadImages();
-    }
-});
 document.querySelector('.button').addEventListener("click", function () {
     loadImages();
 });
@@ -15,10 +9,13 @@ function loadImages() {
     let counter = 0;
     let counter_error = 0;
     let value = document.getElementById('textlinks').value;
+    const notyf = new Notyf();
 
     if (value === '') {
         console.log('vacio');
     } else {
+        notyf.dismissAll();
+        document.querySelector('.text-result').innerHTML = 'Cargando imágenes...';
         document.getElementById('image-empty').style.display = "none";
         document.getElementById('content').innerHTML = "";
         var replace_space = value.replace(/[\s,]+/g, ',');;
@@ -26,24 +23,25 @@ function loadImages() {
 
         for (const index in split) {
             if (split[index] !== "") {
+                let filename = getFilenameFromUrl(split[index].trim());
                 promises.push(testImage(split[index].trim()).then(
                     function fulfilled(img) {
-                        counter = + counter + 1;
-                        let filename = getFilenameFromUrl(split[index].trim());
+                        counter = + counter + 1;                        
                         document.getElementById('content').innerHTML += '<div class="block"><label>'+filename+'</label><img src="' + split[index].trim() + '" onerror="onErrorImage()"></div>';
                     },
                     function rejected() {
                         counter_error = + counter_error + 1;
-                        document.getElementById('content').innerHTML += '<div class="block"><img src="img/satellite.svg" style="transform: scale(0.4);"></div>';
+                        document.getElementById('content').innerHTML += '<div class="block"><label>'+filename+'</label><img src="img/satellite.svg" style="transform: scale(0.4);"></div>';
                     }
                 ));
             }
         }
 
-        Promise.all(promises).then(() => {
+        Promise.all(promises).then(() => {            
             let errorMessage = counter_error > 0 ? ', ' + counter_error + ' imágenes erróneas' : '';
             document.querySelector('.text-result').innerHTML = counter + ' imágenes cargadas' + errorMessage;
             validateContentImagesIsEmpty();
+            notyf.success('Imágenes cargadas');
         });
     }
 }
