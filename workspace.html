@@ -9,6 +9,7 @@
     <link rel="icon" type="image/svg" href="img/favicon.svg"/>
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
 <body>
@@ -30,7 +31,16 @@
             </div>
         </div>
         <div class="images">
-            <label class="text-result">0 imágenes cargadas</label>
+            <div class="images__header">
+               <label class="content-result">0 imágenes cargadas</label>                               
+               <div class="content-download">
+                <button class="btn_dropdown"><i class="fas fa-download"></i></button>
+                <div id="myDropdown" class="dropdown-content">
+                  <a id="download_images">Imágenes</a>
+                  <a id="download_excel">Microsoft Excel (.xlsx)</a>                  
+                </div>
+              </div>
+            </div>
             <div id="image-empty" class="image-empty">
                 <img src="img/astronaut.svg">
                 <h3>Parece que no hay imágenes aquí.</h3>
@@ -40,6 +50,10 @@
     </div>
     <script src="workspace.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip-utils/0.1.0/jszip-utils.min.js"></script>        
+    <script lang="javascript" src="xlsx.full.min.js"></script>
 </body>
 
 </html>
